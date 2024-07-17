@@ -3,15 +3,16 @@ import './App.css';
 import { SuperFabric } from 'super-fabric';
 import { Accordion, AccordionDetails, AccordionSummary, Button, Drawer, Typography } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import EditDimensionsComponent from './components/editDimension';
+import EditDimensionsComponent from './components/editDimension/editDimension';
 import CloseIcon from '@mui/icons-material/Close';
+import SaveComponent from './components/save/save';
 
 export default function App() {
   const superfabric = useRef<SuperFabric | undefined>(undefined);
 
   useEffect(() => {
-    SuperFabric.initialize('superfabric').then((superf) => {     
-      superfabric.current = superf; 
+    SuperFabric.initialize('superfabric').then((superf) => {
+      superfabric.current = superf;
     }).catch((err) => {
       console.error('error on initialize SuperFabric: ', err);
     })
@@ -20,10 +21,11 @@ export default function App() {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const editors: { header: string, component: JSX.Element }[] = [
-    { header: 'Dimensions', component: <EditDimensionsComponent superfabric={ superfabric.current }></EditDimensionsComponent> }
+    { header: 'Save/Open', component: <SaveComponent superfabric={superfabric.current}></SaveComponent> },
+    { header: 'Dimensions', component: <EditDimensionsComponent superfabric={superfabric.current}></EditDimensionsComponent> }
   ];
 
-  const content =
+  return (
     <div style={{ width: '100%', height: '100%' }}>
       <div className='button'>
         <Button onClick={() => setShowDrawer(true)} variant="outlined">
@@ -64,6 +66,5 @@ export default function App() {
         </div>
       </Drawer>
     </div>
-
-  return content;
+  )
 }
