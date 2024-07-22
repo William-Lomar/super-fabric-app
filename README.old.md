@@ -1,2 +1,3 @@
 # super-fabric-app
-Interface para demonstrações de uso do SuperFabric
+Interface for demonstrations of using SuperFabric
+
