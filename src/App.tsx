@@ -6,6 +6,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import EditDimensionsComponent from './components/editDimension/editDimension';
 import CloseIcon from '@mui/icons-material/Close';
 import SaveComponent from './components/save/save';
+import CustomCompent from './components/custom/custom';
 
 export default function App() {
   const superfabric = useRef<SuperFabric | undefined>(undefined);
@@ -22,11 +23,12 @@ export default function App() {
 
   const editors: { header: string, component: JSX.Element }[] = [
     { header: 'Save/Open', component: <SaveComponent superfabric={superfabric.current}></SaveComponent> },
+    { header: 'Custom', component: <CustomCompent superfabric={superfabric.current}></CustomCompent> },
     { header: 'Dimensions', component: <EditDimensionsComponent superfabric={superfabric.current}></EditDimensionsComponent> }
   ];
 
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div style={{ width: '100%', height: '100%', backgroundColor: '#788f8b21' }}>
       <div className='button'>
         <Button onClick={() => setShowDrawer(true)} variant="outlined">
           Open editors

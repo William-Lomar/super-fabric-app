@@ -17,7 +17,11 @@ export default function SaveComponent({ superfabric }: IPropsSaveComponent) {
             </Button>
             <Button onClick={() => {
                 if (!superfabric) return;
-                superfabric.open();
+                superfabric.open().then(() => {
+                    console.log('project loaded');
+                }).catch((err) => {
+                    console.error(err);
+                })
             }} variant="outlined" >
                 Open
             </Button>
